@@ -1,7 +1,7 @@
 js "
 const mavka = getMavka();
 const mavkaContext = getContext();
-mavkaContext.set('Полотно', mavka.makeWrappedProxyFunction(([w = 1000, h = 1000]) => {
+mavkaContext.set('полотно', mavka.makeWrappedProxyFunction(([w = 1000, h = 1000]) => {
   const app = document.querySelector('#app');
   const canvas = document.createElement('canvas');
   canvas.width = w;
@@ -34,4 +34,4 @@ mavkaContext.set('Полотно', mavka.makeWrappedProxyFunction(([w = 1000, h 
 }));
 "
 
-дати палітра
+дати полотно
