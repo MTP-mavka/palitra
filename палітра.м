@@ -1,0 +1,37 @@
+js "
+const mavka = getMavka();
+const mavkaContext = getContext();
+mavkaContext.set('Полотно', mavka.makeWrappedProxyFunction(([w = 1000, h = 1000]) => {
+  const app = document.querySelector('#app');
+  const canvas = document.createElement('canvas');
+  canvas.width = w;
+  canvas.height = h;
+  app.appendChild(canvas);
+  app.setAttribute('style', 'height: 100%; display: flex; justify-content: center; align-items: center;');
+  const canvasContext = canvas.getContext('2d');
+  return {
+    'заповнити_прямокутник': (...args) => {canvasContext.fillRect(...args);},
+    'стерти_прямокутник': (...args) => {canvasContext.clearRect(...args);},
+    'обвести_прямокутник': (...args) => {canvasContext.strokeRect(...args);},
+    'почати_шлях': (...args) => {canvasContext.beginPath(...args);},
+    'закінчити_шлях': () => {canvasContext.closePath();},
+    'обвести': () => {canvasContext.stroke();},
+    'заповнити': () => {canvasContext.fill();},
+    'переміститися': (...args) => {canvasContext.moveTo(...args);},
+    'лінія_до': (...args) => {canvasContext.lineTo(...args);},
+    'арка': (...args) => {canvasContext.arc(...args);},
+    'арка_до': (...args) => {canvasContext.arcTo(...args);},
+    'квадратична_крива': (...args) => {canvasContext.arc(...args);},
+    'крива_Безьє': (...args) => {canvasContext.arcTo(...args);},
+    'прямокутник': (...args) => {canvasContext.arcTo(...args);},
+    'стиль_заповнення': (arg) => { canvasContext.fillStyle = arg;},
+    'стиль_обводки': (arg) => {canvasContext.strokeStyle = arg;},
+    'ширина_лінії': (arg) => {canvasContext.lineWidth = arg;},
+    'заповнити_текст': (...args) => {canvasContext.fillText(...args)},
+    'обвести_текст': (...args) => {canvasContext.strokeText(...args)},
+    'шрифт': (arg) => {canvasContext.font = arg;},
+  };
+}));
+"
+
+дати палітра
